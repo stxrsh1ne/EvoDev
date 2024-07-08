@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   @Output() titleChange = new EventEmitter<string>();
 
   ngOnInit() {
-    this.title = "swag";
+    this.title = "hello";
     this.titleChange.emit(this.title);
   }
 }
