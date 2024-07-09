@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'EvoDev';
+  title ="EvoDev"
+  items = [
+    { name: '1', description: 'cat' },
+    { name: '2', description: 'dog' },
+    { name: '3', description: 'apple' },
+  ];
+
+  date_now = new Date();
 }
