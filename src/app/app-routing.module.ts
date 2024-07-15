@@ -4,6 +4,11 @@ import { BookComponent } from './book/book.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/book',
+    pathMatch: 'full'
+  },
+  {
     path: 'book',
     component: BookComponent
   }
