@@ -1,0 +1,29 @@
+.counter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.counter-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.btn-counter {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.btn-reset {
+  width: 80px;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
