@@ -10,6 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'open-graph',
+    title: 'Open Graph Page',
     component: InlineComponent
   }
 ];

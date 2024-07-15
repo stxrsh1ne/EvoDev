@@ -8,6 +8,7 @@ import { Meta } from '@angular/platform-browser';
 })
 
 export class InlineComponent implements OnInit {
+
   constructor(private meta: Meta) {
     this.meta.addTags([
     { property: 'og:title', content: 'The Rock' },
