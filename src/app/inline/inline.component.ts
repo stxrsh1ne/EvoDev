@@ -9,13 +9,13 @@ import { Meta } from '@angular/platform-browser';
 
 export class InlineComponent implements OnInit {
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta) {}
+
+  ngOnInit(): void {
     this.meta.addTags([
     { property: 'og:title', content: 'The Rock' },
     { property: 'og:type', content: 'video.movie' },
     { property: 'og:url', content: '//www.imdb.com/title/tt0117500/' }
-  ]);}
-
-  ngOnInit(): void {
+  ])
   }
 }
