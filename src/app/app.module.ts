@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { ResponseListComponent } from './response-list/response-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ResponseListComponent
   ],
   imports: [
     BrowserModule
