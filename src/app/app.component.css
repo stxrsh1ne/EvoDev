@@ -1,0 +1,29 @@
+p {
+  font-family: Lato, serif;
+}
+
+.carousel {
+  height: 100vh;
+}
+
+.carousel-item {
+  height: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: opacity 5s ease;
+}
+
+.carousel-item.active img {
+  opacity: 1;
+}
+
+
+
+
+
+
