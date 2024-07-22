@@ -1,0 +1,13 @@
+.button-column {
+  display: flex;
+  align-items: flex-start;
+}
+
+.button-column .btn {
+  margin: 15px 25px;
+}
+
+
+.container {
+  align-items: center;
+}
