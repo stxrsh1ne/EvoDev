@@ -7,7 +7,8 @@ import {Post} from "./post";
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getAllUsers() {
     return this.http.get('https://jsonplaceholder.typicode.com/posts').pipe(

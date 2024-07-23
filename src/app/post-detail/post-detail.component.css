@@ -1,0 +1,21 @@
+.package {
+  max-width: 600px;
+  margin: auto;
+  padding: 10px;
+  position: relative;
+  top: 50%;
+  transform: translateY(15%);
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
