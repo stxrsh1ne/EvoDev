@@ -10,8 +10,7 @@ import {Post} from "../post";
 export class PostDetailComponent implements OnInit {
   postData!: Post;
 
-  constructor(private route: ActivatedRoute) {
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {

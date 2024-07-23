@@ -1,8 +1,12 @@
 .container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: auto;
   padding: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
 }
+
 
 .button-column {
   display: flex;

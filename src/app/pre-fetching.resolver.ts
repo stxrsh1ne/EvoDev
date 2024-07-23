@@ -8,8 +8,7 @@ import {Post} from "./post";
   providedIn: 'root'
 })
 export class PreFetchingResolver implements Resolve<Post> {
-  constructor(private dataService: DataService) {
-  }
+  constructor(private dataService: DataService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Post> {
     return this.dataService.getPostInfo();

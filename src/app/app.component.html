@@ -1,26 +1,26 @@
 <div class="container">
-    <div class="button-column">
-        <button type="button" class="btn btn-outline-primary" (click)="getUsers()">
-            Получить пользователей
-        </button>
-        <button type="button" class="btn btn-outline-primary" (click)="getId()">
-            Получить пользователей с postId=1
-        </button>
-        <button type="button" class="btn btn-outline-primary" (click)="sendPostIsNull()">
-            Получить запрос с пустым объектом
-        </button>
-        <button type="button" class="btn btn-outline-primary" (click)="fetchPosts()">
-            Отправить запрос на ошибки
-        </button>
-        <button type="button" class="btn btn-outline-primary" (click)="fetchTestData()">
-            Отправить GET запрос с заголовком
-        </button>
-        <button type="button" class="btn btn-outline-danger" (click)="deleteResponse()">
-            Удалить пост
-        </button>
-        <button type="button" class="btn btn-outline-success" (click)="navigateToPostDetail()">
-            Показать детали поста
-        </button>
-    </div>
-    <router-outlet></router-outlet>
+  <div class="button-column">
+    <button type="button" class="btn btn-outline-primary" (click)="getUsers()">
+      Получить пользователей
+    </button>
+    <button type="button" class="btn btn-outline-primary" (click)="getId()">
+      Получить пользователей с postId=1
+    </button>
+    <button type="button" class="btn btn-outline-primary" (click)="sendPostIsNull()">
+      Получить запрос с пустым объектом
+    </button>
+    <button type="button" class="btn btn-outline-primary" (click)="fetchPosts()">
+      Отправить запрос на ошибки
+    </button>
+    <button type="button" class="btn btn-outline-primary" (click)="fetchTestData()">
+      Отправить GET запрос с заголовком
+    </button>
+    <button type="button" class="btn btn-outline-danger" (click)="deleteResponse()">
+      Удалить пост
+    </button>
+    <button type="button" class="btn btn-outline-success" (click)="goToPostDetail()">
+      Показать детали поста
+    </button>
+  </div>
+  <router-outlet></router-outlet>
 </div>
