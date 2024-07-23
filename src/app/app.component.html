@@ -63,11 +63,11 @@
               <label class="form-label">Автор</label>
               <input
                 minlength="2"
-                maxlength="10"
-                pattern="[a-zA-Zа-яА-ЯёЁ]*"
+                maxlength="20"
+                pattern="^[а-яА-ЯёЁ]+$"
                 required
                 #secondName="ngModel"
-                name="second_name"
+                name="author"
                 [(ngModel)]="create_person.author"
                 type="text"
                 class="form-control"
