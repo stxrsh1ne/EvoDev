@@ -1,0 +1,29 @@
+.container {
+  max-width: 600px;
+  padding: 25px;
+  position: relative;
+  top: 50%;
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+
+
+
+
+
