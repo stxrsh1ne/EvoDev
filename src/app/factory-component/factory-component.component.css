@@ -1,0 +1,11 @@
+.table {
+  width: 30%;
+  margin: 20px auto;
+}
+
+.table th, .table td {
+  border: 1px solid #dee2e6;
+  font-size: 14px;
+}
+
+

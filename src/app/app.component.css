@@ -1,0 +1,16 @@
+p {
+  font-family: Lato, serif;
+}
+
+.btn {
+  margin: 10px;
+  padding: 10px 20px;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
