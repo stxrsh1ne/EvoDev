@@ -1,0 +1,42 @@
+<h3>Данные пользователя</h3>
+
+<table class="table" *ngIf="user; else loading">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">UserId</th>
+    <th scope="col">Body</th>
+    <th scope="col">Title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">{{ user.id }}</th>
+    <td>
+      <input *ngIf="isEditing" [(ngModel)]="user.userId" type="number"/>
+      <span *ngIf="!isEditing">{{ user.userId }}</span>
+    </td>
+    <td>
+      <input *ngIf="isEditing" [(ngModel)]="user.body" type="text"/>
+      <span *ngIf="!isEditing">{{ user.body }}</span>
+    </td>
+    <td>
+      <input *ngIf="isEditing" [(ngModel)]="user.title" type="text"/>
+      <span *ngIf="!isEditing">{{ user.title }}</span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #loading>
+  <p>Загрузка данных пользователя...</p>
+</ng-template>
+
+<button *ngIf="role === 'admin'" (click)="toggleEdit()" class="btn btn-outline-secondary">
+  {{ isEditing ? 'Отменить' : 'Редактировать' }}
+</button>
+<button *ngIf="isEditing" (click)="saveChanges()" class="btn btn-outline-success">
+  Сохранить изменения
+</button>
+
+<a routerLink="/" class="btn btn-outline-info">На главную</a>

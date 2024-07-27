@@ -1,0 +1,20 @@
+<div class="container">
+  <div *ngIf="users.length > 0; else noUsers">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let user of users">
+        <div class="card" style="width: 18rem;">
+          <img src="https://i.pinimg.com/564x/6a/1b/5f/6a1b5f023762ec48a8300c9be3b005ee.jpg" class="card-img-top"
+               alt="User Image"/>
+          <div class="card-body">
+            <h5 class="card-title">{{ user.title }}</h5>
+            <p class="card-text">{{ user.body }}</p>
+            <a [routerLink]="['/users', user.id]" class="btn btn-outline-primary">Посмотреть данные</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noUsers>
+    <p>Пользователи не найдены.</p>
+  </ng-template>
+</div>
