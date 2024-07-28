@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <h3>All Tasks</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Completed</th>
+      <th>Task</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let todo of todos$ | async; let i = index">
+      <td>
+        <input type="checkbox" (change)="completeTask($event, i)" [checked]="todo.completed" />
+      </td>
+      <td [ngClass]="{ 'text-decoration-line-through': todo.completed }">
+        {{ todo.value }}
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="deleteTask(todo.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
