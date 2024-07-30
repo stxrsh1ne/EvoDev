@@ -29,7 +29,7 @@ export class DataService {
   }
 
   sendPost() {
-    return this.http.post('https://jsonplaceholder.typicode.com/posts', {body: ' '}).pipe(
+    return this.http.post('https://jsonplaceholder.typicode.com/posts', {}).pipe(
       catchError(error => {
         console.error('Error occurred:', error);
         return throwError(() => error);
