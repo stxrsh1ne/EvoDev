@@ -1,0 +1,150 @@
+.name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.toolbar {
+  width: 1440px;
+  height: 110px;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+
+.toolbar span,
+.toolbar a {
+  color: #000000;
+}
+
+.auth-buttons,
+.user-info {
+  align-items: center;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-details {
+  margin-left: 10px;
+}
+
+.user-name {
+  display: block;
+  font-weight: bold;
+}
+
+.user-role {
+  display: block;
+  font-size: 0.9em;
+  color: gray;
+}
+
+.mat-toolbar.mat-primary {
+  background: rgba(255, 255, 255, 0);
+  color: #000000;
+}
+
+.mat-icon {
+  font-size: 24px;
+}
+
+.image-button {
+  margin-right: 15px;
+}
+
+.button-image {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: var(--white, #fff);
+}
+
+.social-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.container {
+  display: flex;
+  width: 1280px;
+  max-width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 100px;
+  padding: 48px 32px;
+  background-color: #ffffff;
+  border-top: 1px solid #e9ecef;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-outlet {
+  flex: 1;
+}
+
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e9ecef;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.--mdc-protected-button-container-color {
+  color: #3a3395;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding: 0 20px;
+  }
+}

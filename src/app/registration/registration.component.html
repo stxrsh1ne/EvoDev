@@ -1,0 +1,115 @@
+<div class="container">
+  <h3 class="header text-center">Зарегистрируйте ваш аккаунт</h3>
+  <form (ngSubmit)="register()" #registrationForm="ngForm" class="form-container">
+    <div class="form-group">
+      <label for="regUsername">Логин</label>
+      <div class="input-container">
+        <input
+          type="text"
+          id="regUsername"
+          [(ngModel)]="registrationData.username"
+          name="username"
+          minlength="3"
+          maxlength="20"
+          pattern="^[A-Za-z0-9]+$"
+          required
+          [ngClass]="{'invalid': registrationForm.controls['username']?.invalid && (registrationForm.controls['username'].dirty || registrationForm.controls['username'].touched)}"
+          class="form-control"
+        />
+        <i class="error-icon"
+           *ngIf="registrationForm.controls['username']?.invalid && (registrationForm.controls['username'].dirty || registrationForm.controls['username'].touched)"></i>
+      </div>
+      <div
+        *ngIf="registrationForm.controls['username']?.invalid && (registrationForm.controls['username'].dirty || registrationForm.controls['username'].touched)">
+      </div>
+
+      <div class="form-group">
+        <label for="regPassword">Пароль</label>
+        <div class="input-container">
+          <input
+            type="password"
+            id="regPassword"
+            [(ngModel)]="registrationData.password"
+            name="password"
+            minlength="4"
+            maxlength="20"
+            pattern="^[A-Za-z0-9]+$"
+            required
+            [ngClass]="{'invalid': registrationForm.controls['password']?.invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)}"
+            class="form-control"
+          />
+          <i class="error-icon"
+             *ngIf="registrationForm.controls['password']?.invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)"></i>
+        </div>
+        <div
+          *ngIf="registrationForm.controls['password']?.invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)">
+        </div>
+
+        <div class="form-group">
+          <label for="firstName">Имя</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="firstName"
+              [(ngModel)]="registrationData.firstName"
+              name="firstName"
+              pattern="^[A-Za-z]+$"
+              required
+              [ngClass]="{'invalid': registrationForm.controls['firstName']?.invalid && (registrationForm.controls['firstName'].dirty || registrationForm.controls['firstName'].touched)}"
+              class="form-control"
+            />
+            <i class="error-icon"
+               *ngIf="registrationForm.controls['firstName']?.invalid && (registrationForm.controls['firstName'].dirty || registrationForm.controls['firstName'].touched)"></i>
+          </div>
+          <div
+            *ngIf="registrationForm.controls['firstName']?.invalid && (registrationForm.controls['firstName'].dirty || registrationForm.controls['firstName'].touched)">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Фамилия</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="lastName"
+              [(ngModel)]="registrationData.lastName"
+              name="lastName"
+              pattern="^[A-Za-z]+$"
+              required
+              [ngClass]="{'invalid': registrationForm.controls['lastName']?.invalid && (registrationForm.controls['lastName'].dirty || registrationForm.controls['lastName'].touched)}"
+              class="form-control"
+            />
+            <i class="error-icon"
+               *ngIf="registrationForm.controls['lastName']?.invalid && (registrationForm.controls['lastName'].dirty || registrationForm.controls['lastName'].touched)"></i>
+          </div>
+          <div
+            *ngIf="registrationForm.controls['lastName']?.invalid && (registrationForm.controls['lastName'].dirty || registrationForm.controls['lastName'].touched)">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="middleName">Отчество (при наличии)</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="middleName"
+              [(ngModel)]="registrationData.middleName"
+              name="middleName"
+              pattern="^[A-Za-z]+$"
+              required
+              [ngClass]="{'invalid': registrationForm.controls['middleName']?.invalid && (registrationForm.controls['middleName'].dirty || registrationForm.controls['middleName'].touched)}"
+              class="form-control"
+            />
+            <i class="error-icon"
+               *ngIf="registrationForm.controls['middleName']?.invalid && (registrationForm.controls['middleName'].dirty || registrationForm.controls['middleName'].touched)"></i>
+          </div>
+          <div
+            *ngIf="registrationForm.controls['middleName']?.invalid && (registrationForm.controls['middleName'].dirty || registrationForm.controls['middleName'].touched)">
+          </div>
+        </div>
+
+        <button type="submit" class="btn custom-btn" [disabled]="registrationForm.invalid">Зарегистрироваться</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,137 @@
+.container {
+  margin-top: 20px;
+}
+
+.table {
+  margin-bottom: 22rem;
+  width: 100%;
+  border-collapse: separate;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #dee2e6;
+}
+
+.table th {
+  padding: 1rem;
+  vertical-align: middle;
+  background-color: #f8f9fa;
+  border: none;
+}
+
+.table td {
+  padding: 1rem;
+  vertical-align: middle;
+  border: none;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-radius: 2px;
+
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: white;
+}
+
+.col-name {
+  width: 60%;
+}
+
+.col-status {
+  width: 15%;
+}
+
+.col-role {
+  width: 15%;
+}
+
+.col-actions {
+  width: 10%;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.user-info .name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.user-info .username {
+  color: #6c757d;
+  margin: 0;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.status.active {
+  background-color: #28a745;
+}
+
+.status.inactive {
+  background-color: #dc3545;
+}
+
+.btn {
+  border: none;
+  background: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn img:hover {
+  opacity: 0.7;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 27px;
+}
+
+.icon-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-button:focus {
+  outline: none;
+}
+
+.icon-button img:hover {
+  opacity: 0.7;
+}

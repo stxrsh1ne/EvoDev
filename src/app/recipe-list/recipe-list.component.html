@@ -1,0 +1,24 @@
+<div class="try-container">
+  <div class="recipe-list-like">
+    <ng-container *ngFor="let recipe of additionalRecipes">
+      <article class="try-card" (click)="goToDetail(recipe)">
+        <header class="like-image-container">
+          <img [src]="recipe.image" alt="{{ recipe.title }}" class="recipe-image-like">
+        </header>
+        <div class="card-content">
+          <h2 class="like-title">{{ recipe.title }}</h2>
+          <footer class="details-like">
+            <div class="detail-item-like">
+              <img src="assets/images/Vector.png" alt="Time icon">
+              <span class="detail-text">{{ recipe.timeCooking }} минут</span>
+            </div>
+            <div class="detail-item-like">
+              <img src="assets/images/ForkKnife.png" alt="Tag icon">
+              <span class="detail-text-like">{{ recipe.tags.join(', ') }}</span>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </ng-container>
+  </div>
+</div>

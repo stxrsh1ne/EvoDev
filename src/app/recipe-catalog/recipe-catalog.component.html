@@ -1,0 +1,157 @@
+<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+  <div class="carousel-inner">
+    <ng-container *ngFor="let recipe of remainingRecipes; let i = index">
+      <div class="carousel-item" [class.active]="i === 0">
+        <div class="recipe-card">
+          <div class="recipe-content">
+            <h2 class="recipe-title">{{ recipe.title }}</h2>
+            <p class="recipe-description">
+              {{ recipe.body }}
+            </p>
+            <div class="recipe-meta">
+              <span class="badge time">
+                <img src="assets/images/Vector.png" alt="Time icon"> {{ recipe.timeCooking }} минут
+              </span>
+              <span class="badge tag">
+                <img src="assets/images/ForkKnife.png" alt="Tag icon">{{ recipe.tags }}
+              </span>
+            </div>
+            <div class="author-info">
+              <div class="author-details">
+                <img [src]="recipe.author.avatar" alt="{{ recipe.author.firstName }} {{ recipe.author.lastName }}" class="avatar">
+                <div class="author-text">
+                  <span class="author-name">{{ recipe.author.firstName }} {{ recipe.author.lastName }}</span>
+                  <small class="publish-date">{{ recipe.createdOn | date: 'd MMMM yyyy' }}</small>
+                </div>
+              </div>
+              <a [routerLink]="['/recipes', recipe.id]" class="btn btn-primary mt-3 view-recipe-btn">Посмотреть</a>
+            </div>
+          </div>
+          <div class="recipe-image-container">
+            <img [src]="recipe.image" class="d-block w-100" alt="{{ recipe.title }}">
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <button class="carousel-control-prev" type="button" data-bs-target="#recipeCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#recipeCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<div class="like-container">
+  <div class="info-like">
+    <h2 class="other-recipes-title">Лучшие Рецепты</h2>
+    <h3 class="other-recipes-title-child">
+      На нашем сайте вы найдете лучшие рецепты, которые помогут вам создавать великолепные
+      блюда и порадовать своих близких и гостей своим кулинарным мастерством.
+    </h3>
+  </div>
+
+  <div class="recipe-list-like">
+    <ng-container *ngFor="let recipe of otherRecipes">
+      <article class="like-card" (click)="goToDetail(recipe)">
+        <header class="like-image-container">
+          <img [src]="recipe.image" alt="{{ recipe.title }}" class="recipe-image-like">
+        </header>
+        <h2 class="like-title">{{ recipe.title }}</h2>
+        <footer class="details-like">
+          <div class="detail-item-like">
+            <img src="assets/images/Vector.png" alt="Time icon">
+            <span class="detail-text">{{ recipe.timeCooking }} минут</span>
+          </div>
+          <div class="detail-item-like">
+            <img src="assets/images/ForkKnife.png" alt="Tag icon">
+            <span class="detail-text-like">{{ recipe.tags }}</span>
+          </div>
+        </footer>
+      </article>
+    </ng-container>
+  </div>
+
+  <button class="btn btn-outline-secondary" (click)="loadMoreRecipes()" *ngIf="otherRecipes.length < 6">Посмотреть еще
+  </button>
+</div>
+<div class="try-container">
+  <header class="title-container">
+    <h2 class="section-title">
+      Попробуйте эти вкусные <br/> рецепты
+    </h2>
+  </header>
+  <article class="description-container">
+    <p class="section-description">
+      Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqut enim ad minim
+    </p>
+  </article>
+  <div class="recipe-list-like">
+    <ng-container *ngFor="let recipe of additionalRecipes">
+      <article class="try-card" (click)="goToDetail(recipe)">
+        <header class="like-image-container">
+          <img [src]="recipe.image" alt="{{ recipe.title }}" class="recipe-image-like">
+        </header>
+        <h2 class="like-title">{{ recipe.title }}</h2>
+        <footer class="details-like">
+          <div class="detail-item-like">
+            <img src="assets/images/Vector.png" alt="Time icon">
+            <span class="detail-text">{{ recipe.timeCooking }} минут</span>
+          </div>
+          <div class="detail-item-like">
+            <img src="assets/images/ForkKnife.png" alt="Tag icon">
+            <span class="detail-text-like">{{ recipe.tags }}</span>
+          </div>
+        </footer>
+      </article>
+    </ng-container>
+  </div>
+</div>
+<div class="why-we">
+  <section class="feature-grid">
+    <div class="container">
+      <h2 class="feature-grid__header">Почему именно мы?</h2>
+      <div class="feature-grid__list">
+        <div *ngFor="let feature of features" class="feature-grid__item">
+          <img src="assets/images/Icon.svg" alt="feature" class="feature-grid__icon"/>
+          <div class="feature-grid__content">
+            <h3 class="feature-grid__title">{{ feature.title }}</h3>
+            <p class="feature-grid__description">{{ feature.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="Poste">
+  <section class="newsletter-container">
+    <div class="newsletter-card">
+      <div class="newsletter-content">
+        <h2 class="newsletter-heading">Хотите получать новые рецепты?</h2>
+        <p class="newsletter-text">
+          Не пропустите ни одного вкусного рецепта! Подпишитесь на нашу рассылку, чтобы получать новые кулинарные идеи и
+          рецепты прямо в свою почту.
+        </p>
+      </div>
+      <form [formGroup]="newsletterForm" (ngSubmit)="onSubmit()" class="newsletter-form">
+        <label for="emailInput" class="visually-hidden">Введите ваш email</label>
+        <input
+          formControlName="email"
+          type="email"
+          id="emailInput"
+          class="custom-input newsletter-input"
+          placeholder="Введите ваш email..."
+          aria-label="Введите ваш email"/>
+        <button type="submit" class="btn btn-primary mt-3 view-recipe-btn custom-btn">Подписаться</button>
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error">
+          <div *ngIf="email?.errors?.['required']">Email обязателен.</div>
+          <div *ngIf="email?.errors?.['email']">Некорректный email.</div>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+

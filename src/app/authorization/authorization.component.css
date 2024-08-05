@@ -1,0 +1,82 @@
+.header {
+  color: #111827;
+  margin-bottom: 32px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 90px auto 175px -20px;
+  max-width: 100%;
+  padding: 10px;
+}
+
+.header {
+  color: #111827;
+  margin-bottom: 32px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.card {
+  width: 448px;
+  height: auto;
+}
+
+.card-body {
+  padding-top: 32px;
+  box-shadow: 0 0 10px rgba(63, 60, 60, 0.4);
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.custom-btn {
+  background-color: #3a3395;
+  color: white;
+  border: none;
+  margin-top: 24px;
+}
+
+.github-button {
+  background-color: #ffffff;
+  color: #6b7280;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  text-decoration: none;
+  margin-top: 32px;
+}
+
+.github-button:hover {
+  background-color: #fafafa;
+}
+
+.reg {
+  text-decoration: none;
+  color: #3a3395;
+}
+
+.form-control.invalid {
+  border-color: red;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+  color: red;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc;
+  margin: 0 10px;
+}

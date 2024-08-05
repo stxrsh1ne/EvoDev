@@ -1,0 +1,15 @@
+<div class="error-container">
+  <div class="error-content">
+    <div class="error-content-child">
+      <h1>{{ errorCode }} Ошибка</h1>
+      <h2>{{ errorMessage.split(': ')[0] }}</h2>
+      <p>{{ errorMessage.split(': ')[1] }}</p>
+      <a class="link" (click)="goBack()">Назад →</a>
+      <a class="link" routerLink="/recipes">На главную →</a>
+    </div>
+  </div>
+  <div class="error-image">
+    <img src="assets/images/image_404.png" alt="Ошибка {{errorCode}}">
+  </div>
+</div>
+

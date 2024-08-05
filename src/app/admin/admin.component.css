@@ -1,0 +1,58 @@
+.admin-panel {
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, sans-serif;
+  top: 111px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 1000;
+  margin-left: 80px;
+  margin-bottom: 30px;
+  padding: 20px 80px;
+}
+
+.admin-paneltitle {
+  color:  #111827;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0 0 20px;
+}
+
+.admin-panelnav {
+  border-bottom: 1px solid  #e5e7eb;
+}
+
+.admin-paneltabs {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-paneltab {
+  margin-right: 32px;
+}
+
+.admin-paneltab-link {
+  color: #6b7280;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0 4px 16px;
+  text-decoration: none;
+}
+
+.admin-paneltab--active .admin-paneltab-link {
+  color: #3a3395;
+  border-bottom: 2px solid #3a3395;
+}
+
+@media (max-width: 991px) {
+  .admin-paneltitle,
+  .admin-panel__nav {
+    max-width: 100%;
+  }
+}

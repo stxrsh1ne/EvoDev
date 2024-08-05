@@ -1,0 +1,35 @@
+<div *ngIf="user" class="user-info mt-4">
+  <p><strong>ID:</strong> {{ user.id }}</p>
+  <p><strong>Имя:</strong> {{ user.firstName }} {{ user.lastName }} {{ user.middleName }}</p>
+  <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+  <p><strong>Статус:</strong>
+    <span class="status" [ngClass]="{'active': user.isActive, 'inactive': !user.isActive}">
+      {{ user.isActive ? 'Активен' : 'Неактивен' }}
+    </span>
+  </p>
+  <p><strong>Роль:</strong> {{ user.role }}</p>
+  <p><strong>Аватар:</strong></p>
+  <img *ngIf="user.avatar" [src]="user.avatar" alt="Avatar" class="avatar"/>
+  <p><strong>User Agent:</strong> {{ user.userAgent }}</p>
+  <p><strong>Дата создания:</strong> {{ user.createdOn }}</p>
+  <p><strong>Дата обновления:</strong> {{ user.updatedOn }}</p>
+  <p><strong>Последний вход:</strong> {{ user.lastEntry }}</p>
+
+  <h6>Посты:</h6>
+  <ul>
+    <li *ngFor="let post of user.posts">{{ post.title }}</li>
+  </ul>
+
+  <h6>Комментарии:</h6>
+  <ul>
+    <li *ngFor="let comment of user.comments">{{ comment.text }}</li>
+  </ul>
+</div>
+
+<button
+  type="button"
+  class="btn btn-outline-warning"
+  (click)="deleteUserOnInfo()"
+>
+  Удалить пользователя
+</button>

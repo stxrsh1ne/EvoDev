@@ -1,0 +1,152 @@
+<div class="edit-recipe-container">
+  <h2 class="section-title">Редактирование рецепта</h2>
+  <form [formGroup]="editRecipeForm" (ngSubmit)="editRecipe()" class="recipe-form">
+    <fieldset class="form-section">
+      <legend style="font-size: 18px; font-weight: bold;">Основная информация</legend>
+      <div class="form-divider"></div>
+      <div class="form-field">
+        <label for="title" class="field-label" style="font-size: 14px">Название рецепта:</label>
+        <input id="title" formControlName="title" class="text-input"/>
+        <div *ngIf="editRecipeForm.get('title')?.invalid && editRecipeForm.get('title')?.touched">
+          Поле обязательно для заполнения
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+      <div class="form-field">
+        <label for="body" class="field-label" style="font-size: 14px">Краткое описание:</label>
+        <div class="textarea-wrapper">
+          <textarea id="body" formControlName="body" class="textarea-input"></textarea>
+          <p class="help-text">Опишите, о чем ваш рецепт</p>
+          <div *ngIf="editRecipeForm.get('body')?.invalid && editRecipeForm.get('body')?.touched">
+            Поле обязательно для заполнения
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-section">
+      <legend style="font-size: 18px; font-weight: bold;">Дополнительная информация</legend>
+      <div class="form-divider"></div>
+      <div class="form-group">
+        <label class="field-label" style="font-size: 14px">Категория:</label>
+        <input id="category" formControlName="tags" class="text-input"/>
+        <div *ngIf="editRecipeForm.get('tags')?.invalid && editRecipeForm.get('tags')?.touched">
+        </div>
+      </div>
+
+
+
+      <div class="form-divider"></div>
+      <div class="form-field">
+        <label for="timeCooking" class="field-label" style="font-size: 14px">Время приготовления:</label>
+        <input id="timeCooking" type="number" formControlName="timeCooking" class="text-input"/>
+        <div *ngIf="editRecipeForm.get('timeCooking')?.invalid && editRecipeForm.get('timeCooking')?.touched">
+          Поле обязательно для заполнения
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+      <div class="form-group" formGroupName="foodValue">
+        <div class="form-field">
+          <label for="proteins" class="field-label" style="font-size: 14px">Белки:</label>
+          <input id="proteins" type="number" formControlName="proteins" class="text-input"/>
+          <div
+            *ngIf="editRecipeForm.get('foodValue')!.get('proteins')?.invalid && editRecipeForm.get('foodValue')!.get('proteins')?.touched">
+            Поле обязательно для заполнения
+          </div>
+        </div>
+        <div class="form-divider"></div>
+        <div class="form-field">
+          <label for="fats" class="field-label" style="font-size: 14px">Жиры:</label>
+          <input id="fats" type="number" formControlName="fats" class="text-input"/>
+          <div
+            *ngIf="editRecipeForm.get('foodValue')!.get('fats')?.invalid && editRecipeForm.get('foodValue')!.get('fats')?.touched">
+            Поле обязательно для заполнения
+          </div>
+        </div>
+        <div class="form-divider"></div>
+        <div class="form-field">
+          <label for="carbohydrates" class="field-label" style="font-size: 14px">Углеводы:</label>
+          <input id="carbohydrates" type="number" formControlName="carbohydrates" class="text-input"/>
+          <div
+            *ngIf="editRecipeForm.get('foodValue')!.get('carbohydrates')?.invalid && editRecipeForm.get('foodValue')!.get('carbohydrates')?.touched">
+            Поле обязательно для заполнения
+          </div>
+        </div>
+        <div class="form-divider"></div>
+        <div class="form-field">
+          <label for="calories" class="field-label" style="font-size: 14px">Калории:</label>
+          <input id="calories" type="number" formControlName="calories" class="text-input"/>
+          <div
+            *ngIf="editRecipeForm.get('foodValue')!.get('calories')?.invalid && editRecipeForm.get('foodValue')!.get('calories')?.touched">
+            Поле обязательно для заполнения
+          </div>
+        </div>
+        <div class="form-divider"></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-section">
+      <legend style="font-size: 18px; font-weight: bold;">Детальная информация</legend>
+      <p class="description">Детально опишите первый шаг вашего рецепта</p>
+      <div class="form-divider"></div>
+      <div class="form-group" formArrayName="cookingSteps">
+        <div *ngFor="let step of cookingSteps.controls; let i = index" [formGroupName]="i" class="step-field">
+          <div class="form-field">
+            <label for="step-title-{{i}}" class="field-label" style="font-size: 14px">Краткое действие:</label>
+            <input id="step-title-{{i}}" formControlName="title" class="text-input step-title"/>
+            <div *ngIf="step.get('title')?.invalid && step.get('title')?.touched">
+              Поле обязательно для заполнения
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="step-body-{{i}}" class="field-label" style="font-size: 14px">Описание:</label>
+            <textarea id="step-body-{{i}}" formControlName="description"
+                      class="textarea-input step-description"></textarea>
+            <div *ngIf="step.get('description')?.invalid && step.get('description')?.touched">
+              Поле обязательно для заполнения
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-divider"></div>
+      <button type="button" (click)="addCookingStep()" class="add-more-button">Добавить шаг</button>
+    </fieldset>
+
+    <fieldset class="form-section">
+      <legend style="font-size: 18px; font-weight: bold;">Ингредиенты</legend>
+      <div class="form-divider"></div>
+      <div class="form-group" formArrayName="ingredients">
+        <div *ngFor="let ingredient of ingredients.controls; let i = index" [formGroupName]="i"
+             class="ingredient-field">
+          <div class="form-field">
+            <label for="ingredient-title-{{i}}" class="field-label" style="font-size: 14px">Название
+              ингредиента:</label>
+            <input id="ingredient-title-{{i}}" formControlName="title" class="text-input ingredient-title"/>
+            <div *ngIf="ingredient.get('title')?.invalid && ingredient.get('title')?.touched">
+              Поле обязательно для заполнения
+            </div>
+          </div>
+          <div class="form-divider"></div>
+          <div class="form-field">
+            <label for="ingredient-description-{{i}}" class="field-label" style="font-size: 14px">Описание:</label>
+            <input id="ingredient-description-{{i}}" formControlName="description" class="text-input ingredient-title"/>
+            <div *ngIf="ingredient.get('description')?.invalid && ingredient.get('description')?.touched">
+              Поле обязательно для заполнения
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-divider"></div>
+      <button type="button" (click)="addIngredient()" class="add-more-button">Добавить ингредиент</button>
+    </fieldset>
+
+    <button type="submit" class="submit-button">
+      <span>Обновить рецепт</span>
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/af5ccbd4b13f222054ef9947782b71dc2f62a56e889409c5ebc42f99be08fe6a?apiKey=3bdf6882f323464f8c63f7fdde26f57d&&apiKey=3bdf6882f323464f8c63f7fdde26f57d"
+        alt="" class="submit-icon"/>
+    </button>
+  </form>
+</div>

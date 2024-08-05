@@ -1,0 +1,14 @@
+<header class="admin-panel">
+  <h1 class="admin-paneltitle">Панель администрирования</h1>
+  <nav class="admin-panelnav">
+    <ul class="admin-paneltabs">
+      <li class="admin-paneltab" routerLinkActive="admin-paneltab--active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/admin/users" class="admin-paneltab-link">Управление пользователями</a>
+      </li>
+      <li class="admin-paneltab" routerLinkActive="admin-paneltab--active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/admin/recipes" class="admin-paneltab-link">Управление рецептами</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<router-outlet></router-outlet>

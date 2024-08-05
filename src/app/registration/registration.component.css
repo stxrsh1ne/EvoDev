@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto 45px -20px;
+  max-width: 100%;
+  padding: 10px;
+}
+
+.header {
+  color: #111827;
+  margin-bottom: 32px;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 1px;
+}
+
+.card {
+  width: 448px;
+  height: 537px;
+}
+
+.card-body {
+  padding-top: 32px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 448px;
+  height: 537px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(63, 60, 60, 0.4);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.form-control {
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-control.invalid {
+  border-color: red;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+  color: red;
+}
+
+.input-container {
+  position: relative;
+}
+
+.custom-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3a3395;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:disabled {
+  background-color: #37308f;
+  cursor: not-allowed;
+}
+
+.custom-btn:not(:disabled):hover {
+  background-color: #37308f;
+}

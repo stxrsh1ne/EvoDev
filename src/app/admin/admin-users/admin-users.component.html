@@ -1,0 +1,38 @@
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" class="col-name">НАИМЕНОВАНИЕ</th>
+      <th scope="col" class="col-status">СТАТУС</th>
+      <th scope="col" class="col-role">РОЛЬ</th>
+      <th scope="col" class="col-actions"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>
+        <div class="user-details">
+          <img [src]="user.avatar" alt="{{ user.username }}" class="avatar">
+          <div class="user-info">
+            <p class="name">{{ user.firstName }} {{ user.lastName }}</p>
+            <p class="username">{{ user.username }}</p>
+          </div>
+        </div>
+      </td>
+      <td>
+          <span class="status" [ngClass]="{'active': user.isActive, 'inactive': !user.isActive}">
+            {{ user.isActive ? 'Активен' : 'Неактивен' }}
+          </span>
+      </td>
+      <td>{{ user.role }}</td>
+      <td>
+        <a [routerLink]="['/admin/users', user.id]" class="btn btn-warning"><img
+          src="/assets/images/material-symbols_edit-outline.svg"></a>
+        <button type="button" class="icon-button" (click)="deleteUser(user.id)">
+          <img src="assets/images/trash-2.svg" alt="Delete">
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

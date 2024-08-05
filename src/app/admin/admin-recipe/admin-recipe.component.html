@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>НАЗВАНИЕ РЕЦЕПТА</th>
+      <th>КРАТКОЕ ОПИСАНИЕ</th>
+      <th>ID РЕЦЕПА</th>
+      <th>КАТЕГОРИЯ</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let recipe of recipes">
+      <td>{{ recipe.title }}</td>
+      <td>{{ recipe.body }}</td>
+      <td>{{ recipe.id }}</td>
+      <td>{{ recipe.tags.join(', ') }}</td>
+      <td>
+        <a [routerLink]="['/admin/recipes', recipe.id]" class="btn btn-warning"><img
+          src="/assets/images/material-symbols_edit-outline.svg"></a>
+        <button (click)="deleteRecipe(recipe.id)" class="btn btn-danger"><img src="/assets/images/trash-2.svg"></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+</div>

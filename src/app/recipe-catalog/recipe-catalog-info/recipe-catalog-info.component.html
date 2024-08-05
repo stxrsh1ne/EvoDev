@@ -1,0 +1,88 @@
+<form (ngSubmit)="addComment()" class="mt-5">
+  <div class="form-group">
+    <label for="commentPostId">Post ID</label>
+    <input
+      type="text"
+      id="commentPostId"
+      [(ngModel)]="commentData.postId"
+      name="postId"
+      required
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="commentText">Comment</label>
+    <textarea
+      id="commentText"
+      [(ngModel)]="commentData.text"
+      name="text"
+      required
+      class="form-control"
+    ></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Comment</button>
+</form>
+
+<div *ngIf="error" class="alert alert-danger">
+  {{ error }}
+</div>
+
+<div *ngIf="!error && recipe" class="row">
+  <div class="col-md-4 mb-4">
+    <div class="card">
+      <img
+        *ngIf="recipe.image"
+        [src]="recipe.image"
+        [alt]="recipe.title"
+        class="card-img-top"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ recipe.title }}</h5>
+        <p class="card-text">{{ recipe.body }}</p>
+        <p class="card-text">
+          <strong>Tags:</strong> {{ recipe.tags.join(', ') }}
+        </p>
+        <p class="card-text">
+          <strong>Cooking Time:</strong> {{ recipe.timeCooking }} minutes
+        </p>
+        <p class="card-text">
+          <strong>Food Value:</strong>
+          Calories: {{ recipe.foodValue.calories }} |
+          Fats: {{ recipe.foodValue.fats }} |
+          Carbohydrates: {{ recipe.foodValue.carbohydrates }} |
+          Proteins: {{ recipe.foodValue.proteins }}
+        </p>
+
+        <h6>Ingredients</h6>
+        <ul>
+          <li *ngFor="let ingredient of recipe.ingredients">
+            {{ ingredient.title }}: {{ ingredient.description }}
+          </li>
+        </ul>
+
+        <h6>Cooking Steps</h6>
+        <ol>
+          <li *ngFor="let step of recipe.cookingSteps">
+            <strong>{{ step.title }}:</strong> {{ step.description }}
+          </li>
+        </ol>
+
+        <h6>Comments</h6>
+        <ul>
+          <li *ngFor="let comment of recipe.comments">
+            <strong>{{ comment.user?.firstName }}:</strong> {{ comment.text }}
+          </li>
+        </ul>
+
+        <p class="card-text">
+          <small class="text-muted">Автор: {{ recipe.author.firstName }} {{ recipe.author.lastName }}</small>
+        </p>
+        <p class="card-text">
+          <small class="text-muted">Создано: {{ recipe.createdOn | date }}</small> |
+          <small class="text-muted">Обновлено: {{ recipe.updatedOn | date }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
