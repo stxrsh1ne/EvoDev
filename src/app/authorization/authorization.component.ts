@@ -9,13 +9,13 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./authorization.component.css']
 })
 export class AuthorizationComponent {
-  constructor(private http: HttpClient, private dataService: DataService, private router: Router) {}
-
   fastJwt = false;
   loginData = { username: '', password: '' };
 
+  constructor(private http: HttpClient, private dataService: DataService, private router: Router) {}
+
   login(): void {
-    this.dataService.login(this.loginData.username, this.loginData.password)
+    this.dataService.login(this.loginData.username, this.loginData.password, this.fastJwt)
       .subscribe(
         (response: any) => {
           console.log('Успешная авторизация', response);

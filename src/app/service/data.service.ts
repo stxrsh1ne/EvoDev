@@ -50,16 +50,16 @@ export class DataService {
     return this._currentUser$.value;
   }
 
-  public login(username: string, password: string): Observable<any> {
-    return this.http.post('https://evo-academy.wckz.dev/api/cooking-blog/users/sign', { username, password }).pipe(
+  public login(username: string, password: string, fastJwt: boolean): Observable<any> {
+    return this.http.post('https://evo-academy.wckz.dev/api/cooking-blog/users/sign', { username, password, fastJwt }).pipe(
       tap((response: any) => {
         const user = new Auth(
           response.id,
           response.role,
           response.firstName,
           response.lastName,
-          response.username,
           response.middleName,
+          response.username,
           response.avatar
         );
 
@@ -68,9 +68,16 @@ export class DataService {
 
         localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem(this.tokenKey, response.jwtToken);
+
+        if (fastJwt) {
+          setTimeout(() => {
+            this.logout();
+          }, 5000);
+        }
       })
     );
   }
+
 
   public logout(): void {
     localStorage.removeItem('currentUser');
@@ -135,5 +142,8 @@ export class DataService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(() => new Error(errorMessage));
+  }
+  getFavorites(userId: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${this.baseUrl}/users/${userId}/favorites`);
   }
 }

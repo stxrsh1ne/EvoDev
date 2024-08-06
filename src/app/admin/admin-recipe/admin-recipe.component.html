@@ -16,12 +16,31 @@
       <td>{{ recipe.id }}</td>
       <td>{{ recipe.tags.join(', ') }}</td>
       <td>
-        <a [routerLink]="['/admin/recipes', recipe.id]" class="btn btn-warning"><img
-          src="/assets/images/material-symbols_edit-outline.svg"></a>
-        <button (click)="deleteRecipe(recipe.id)" class="btn btn-danger"><img src="/assets/images/trash-2.svg"></button>
+        <a [routerLink]="['/admin/recipes', recipe.id]" class="btn btn-warning"><img src="/assets/images/material-symbols_edit-outline.svg"></a>
+        <button (click)="openModal(recipe.id)" class="btn btn-danger">
+          <img src="/assets/images/trash-2.svg">
+        </button>
       </td>
     </tr>
     </tbody>
   </table>
   <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div class="modal" tabindex="-1" role="dialog" *ngIf="isModalVisible">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Удалить этот рецепт?</h5>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Вы хотите удалить этот рецепт</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" (click)="closeModal()">Закрыть</button>
+          <button type="button" class="btn btn-danger" (click)="deleteRecipe(selectedRecipeId!)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

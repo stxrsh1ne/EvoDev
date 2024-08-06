@@ -1,5 +1,6 @@
 <div class="edit-recipe-container">
   <h2 class="section-title">Редактирование рецепта</h2>
+  <h2 class="section-title">Редактирование рецепта: {{editRecipeForm.get('title')?.value}}</h2>
   <form [formGroup]="editRecipeForm" (ngSubmit)="editRecipe()" class="recipe-form">
     <fieldset class="form-section">
       <legend style="font-size: 18px; font-weight: bold;">Основная информация</legend>

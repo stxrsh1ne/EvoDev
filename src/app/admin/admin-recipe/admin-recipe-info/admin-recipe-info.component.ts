@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { DataService } from '../../../service/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { CookingStep, Ingredient, Recipe } from '../../../interface/recipe';
@@ -67,7 +67,6 @@ export class AdminRecipeInfoComponent implements OnInit {
     });
   }
 
-
   setCookingSteps(steps: CookingStep[]): void {
     const stepsArray = this.editRecipeForm.get('cookingSteps') as FormArray;
     stepsArray.clear();
@@ -131,6 +130,7 @@ export class AdminRecipeInfoComponent implements OnInit {
         this.recipeService.updateRecipe(this.recipeId, recipe).subscribe(
           () => {
             Notiflix.Notify.success('Рецепт успешно обновлен');
+
             this.editRecipeForm.reset();
             this.location.back();
           },

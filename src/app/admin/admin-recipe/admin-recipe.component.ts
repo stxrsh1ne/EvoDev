@@ -11,6 +11,8 @@ import {Recipe} from "../../interface/recipe";
 export class AdminRecipeComponent {
   error: string | null = null;
   recipes: Recipe[] = [];
+  isModalVisible: boolean = false;
+  selectedRecipeId: string | null = null;
 
   constructor(private dataService: DataService) {
     this.loadRecipes();
@@ -23,11 +25,22 @@ export class AdminRecipeComponent {
     });
   }
 
+  openModal(recipeId: string) {
+    this.selectedRecipeId = recipeId;
+    this.isModalVisible = true;
+  }
+
+  closeModal() {
+    this.isModalVisible = false;
+    this.selectedRecipeId = null;
+  }
+
   deleteRecipe(id: string) {
     this.dataService.deleteRecipeInfo(id).subscribe({
       next: () => {
         this.recipes = this.recipes.filter(recipe => recipe.id !== id);
         Notiflix.Notify.success('Рецепт успешно удален');
+        this.closeModal();
       },
       error: (err) => this.handleError('Deleting recipe', err)
     });

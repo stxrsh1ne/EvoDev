@@ -1,6 +1,6 @@
 <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
   <div class="carousel-inner">
-    <ng-container *ngFor="let recipe of remainingRecipes; let i = index">
+    <ng-container *ngFor="let recipe of remainingRecipies; let i = index">
       <div class="carousel-item" [class.active]="i === 0">
         <div class="recipe-card">
           <div class="recipe-content">
@@ -43,7 +43,6 @@
     </button>
   </div>
 </div>
-
 <div class="like-container">
   <div class="info-like">
     <h2 class="other-recipes-title">Лучшие Рецепты</h2>

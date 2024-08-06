@@ -16,6 +16,11 @@
               <img src="assets/images/ForkKnife.png" alt="Tag icon">
               <span class="detail-text-like">{{ recipe.tags.join(', ') }}</span>
             </div>
+            <div class="detail-item-like">
+              <button (click)="toggleFavorite(recipe.id)">
+                <img src="assets/images/{{ isFavorite(recipe.id) ? 'like-leke.svg' : 'common-like.svg' }}" alt="Favorite icon">
+              </button>
+            </div>
           </footer>
         </div>
       </article>

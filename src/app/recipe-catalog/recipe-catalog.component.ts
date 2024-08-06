@@ -15,7 +15,7 @@ export class RecipeCatalogComponent implements OnInit {
   allRecipes: Recipe[] = [];
   otherRecipes: Recipe[] = [];
   additionalRecipes: Recipe[] = [];
-  remainingRecipes: Recipe[] = [];
+  remainingRecipies: Recipe[] = [];
 
   newsletterForm: FormGroup;
 
@@ -52,9 +52,11 @@ export class RecipeCatalogComponent implements OnInit {
     this.dataService.getRecipes(filter).subscribe({
       next: (data: Recipe[]) => {
         this.allRecipes = data;
+        this.remainingRecipies = this.allRecipes
+          .filter(recipe => !this.otherRecipes.includes(recipe))
+          .slice(0, 3);
         this.otherRecipes = this.getRandomRecipes(this.allRecipes, 3);
-        this.remainingRecipes = this.allRecipes.filter(recipe => !this.otherRecipes.includes(recipe));
-        this.additionalRecipes = this.getRandomRecipes(this.remainingRecipes, 4);
+        this.additionalRecipes = this.getRandomRecipes(this.allRecipes, 4);
       },
       error: (err) => this.error = 'Не удалось загрузить рецепты'
     });

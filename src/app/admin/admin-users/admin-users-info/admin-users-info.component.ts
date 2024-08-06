@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as Notiflix from "notiflix";
-import { Router, ActivatedRoute } from "@angular/router";
-import { DataService } from "../../../service/data.service";
-import { User } from "../../../interface/user";
+import {Router, ActivatedRoute} from "@angular/router";
+import {DataService} from "../../../service/data.service";
+import {User} from "../../../interface/user";
 
 @Component({
   selector: 'app-admin-users-info',
@@ -13,8 +13,9 @@ export class AdminUsersInfoComponent implements OnInit {
   error: string | null = null;
   user: User | null = null;
   userIdOnInfo: string = '';
-
-  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) {}
+  @ViewChild('deleteModal') deleteModal!: ElementRef<HTMLDivElement>;
+  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -28,7 +29,6 @@ export class AdminUsersInfoComponent implements OnInit {
       this.dataService.getUserById(this.userIdOnInfo).subscribe({
         next: (response) => {
           this.user = response;
-          Notiflix.Notify.success('Successfully requested user');
         },
         error: (err) => this.handleError('Fetching user', err)
       });
@@ -36,11 +36,20 @@ export class AdminUsersInfoComponent implements OnInit {
   }
 
   deleteUserOnInfo() {
+    const modal = this.deleteModal.nativeElement;
+
     if (this.userIdOnInfo) {
+      modal.classList.remove('show');
+      modal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+      const modalBackdrop = document.querySelector('.modal-backdrop');
+      if (modalBackdrop) {
+        modalBackdrop.remove();
+      }
+
       this.dataService.deleteUser(this.userIdOnInfo).subscribe({
         next: () => {
-          Notiflix.Notify.success('User deleted successfully');
-          this.router.navigate(['/users']);
+          this.router.navigate(['/admin/users']);
         },
         error: (err) => this.handleError('Deleting user', err)
       });
@@ -48,6 +57,7 @@ export class AdminUsersInfoComponent implements OnInit {
       Notiflix.Notify.warning('User ID is required for deletion');
     }
   }
+
 
   handleError(context: string, err: any): void {
     console.error(`${context}:`, err);

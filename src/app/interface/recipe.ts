@@ -8,11 +8,13 @@ export interface FoodValue {
 export interface CookingStep {
   title: string;
   description: string;
+  completed?: boolean;
 }
 
 export interface Ingredient {
   title: string;
   description: string;
+  completed?: boolean;
 }
 
 export interface Author {

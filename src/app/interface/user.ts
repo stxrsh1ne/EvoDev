@@ -17,6 +17,7 @@ export interface User {
 
 export interface Post {
   id: string;
+  image:string;
   body: string;
   title: string;
   createdOn: string;

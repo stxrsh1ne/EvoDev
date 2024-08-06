@@ -135,3 +135,21 @@
 .icon-button img:hover {
   opacity: 0.7;
 }
+.account-info {
+  margin-top: 20px;
+}
+
+.account-info table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.account-info td {
+  padding: 8px;
+  border: 1px solid #e3e3e3;
+}
+
+.account-info td:first-child {
+  font-weight: bold;
+  background-color: #f9f9f9;
+}

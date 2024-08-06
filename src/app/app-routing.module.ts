@@ -28,9 +28,9 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      { path: 'users', component: AdminUsersComponent },
-      { path: 'recipes', component: AdminRecipeComponent },
-      { path: '', redirectTo: 'users', pathMatch: 'full' }
+      {path: 'users', component: AdminUsersComponent},
+      {path: 'recipes', component: AdminRecipeComponent},
+      {path: '', redirectTo: 'users', pathMatch: 'full'}
     ]
   },
   {
@@ -42,8 +42,6 @@ const routes: Routes = [
   {
     path: 'recipes',
     component: RecipeListComponent,
-    canActivate: [AccessRoleGuard],
-    data: {roles: ['admin', 'user']}
   },
   {
     path: 'admin/users',
@@ -58,9 +56,8 @@ const routes: Routes = [
     data: {roles: ['admin']}
   },
   {path: '', component: RecipeCatalogComponent},
-  {path: 'recipes/:id', component: RecipeCatalogInfoComponent,
-    canActivate: [AccessRoleGuard],
-    data: {roles: ['admin', 'user']}},
+  {path: 'recipes/:id', component: RecipeCatalogInfoComponent},
+
   {path: 'error/:code', component: ErrorComponent},
   {path: '**', redirectTo: '/error/404'}
 

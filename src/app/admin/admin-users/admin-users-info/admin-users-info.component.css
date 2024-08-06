@@ -1,0 +1,238 @@
+.container-info {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.user-header-info {
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.bg-danger {
+  background-color: red;
+  color: white;
+}
+
+.bg-primary {
+  background-color: blue;
+  color: white;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.name-and-role {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 1px;
+}
+
+.role {
+  background-color: #e3e3e3;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #666;
+}
+
+.created-on {
+  font-size: 14px;
+  color: #999;
+}
+
+.user-stats {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.stat {
+  flex: 1;
+  margin: 0 10px;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: left;
+}
+
+.stat p {
+  margin: 0 0 5px;
+  font-weight: 600;
+  color: #6B7280;
+  font-size: 14px;
+}
+
+.stat span {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.status.active {
+  color: green;
+}
+
+.status.inactive {
+  color: red;
+}
+
+.user-recipes {
+  margin-top: 20px;
+}
+
+.recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.title-create {
+  font-weight: 400;
+  font-size: 18px;
+  border-bottom: 2px solid #E5E7EB;
+  margin-bottom: 20px;
+}
+
+.recipe-card {
+  width: calc(25% - 20px);
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.recipe-info {
+  padding: 10px;
+}
+
+.recipe-title {
+  font-size: 14px;
+  font-weight: 550;
+  margin: 0;
+  color: #111827;
+}
+
+.recipe-date {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 5px 0 0;
+  font-weight: 500;
+}
+
+.account-info-card {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  width: 100%;
+  padding: 20px 24px;
+  color: #111827;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.card-divider {
+  background-color: #e5e7eb;
+  min-height: 1px;
+  width: 100%;
+}
+
+.card-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.info-item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 20px 24px;
+}
+
+.info-content {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.info-title {
+  color: #6B7280;
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+}
+
+.info-detail {
+  color: #111827;
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+  text-align: left;
+  margin-left: -500px;
+}
+
+.last-login .info-content {
+  padding: 5px 0;
+}
+
+.modal-backdrop {
+  display: none;
+}
+
+.modal-body {
+  padding-top: 1px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  background-color: #F9FAFB;
+}

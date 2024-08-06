@@ -27,7 +27,7 @@ import {ErrorComponent} from "./error/error.component";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {AdminRecipeInfoComponent} from "./admin/admin-recipe/admin-recipe-info/admin-recipe-info.component";
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import {RecipeListComponent} from './recipe-list/recipe-list.component';
 import {AdminComponent} from "./admin/admin.component";
 
 
@@ -65,7 +65,7 @@ import {AdminComponent} from "./admin/admin.component";
     MatCardModule,
     AppRoutingModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true}],
   bootstrap: [AppComponent]

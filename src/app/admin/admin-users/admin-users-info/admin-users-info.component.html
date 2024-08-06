@@ -1,35 +1,120 @@
-<div *ngIf="user" class="user-info mt-4">
-  <p><strong>ID:</strong> {{ user.id }}</p>
-  <p><strong>Имя:</strong> {{ user.firstName }} {{ user.lastName }} {{ user.middleName }}</p>
-  <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
-  <p><strong>Статус:</strong>
-    <span class="status" [ngClass]="{'active': user.isActive, 'inactive': !user.isActive}">
-      {{ user.isActive ? 'Активен' : 'Неактивен' }}
-    </span>
-  </p>
-  <p><strong>Роль:</strong> {{ user.role }}</p>
-  <p><strong>Аватар:</strong></p>
-  <img *ngIf="user.avatar" [src]="user.avatar" alt="Avatar" class="avatar"/>
-  <p><strong>User Agent:</strong> {{ user.userAgent }}</p>
-  <p><strong>Дата создания:</strong> {{ user.createdOn }}</p>
-  <p><strong>Дата обновления:</strong> {{ user.updatedOn }}</p>
-  <p><strong>Последний вход:</strong> {{ user.lastEntry }}</p>
+<div class="container-info">
+  <div *ngIf="user">
+    <div class="user-header-info">
+      <div class="header-left">
+        <img *ngIf="user.avatar" [src]="user.avatar" alt="Avatar" class="avatar"/>
+        <div class="user-details">
+          <div class="name-and-role">
+            <p class="username">{{ user.firstName }} {{ user.lastName }}</p>
+            <span
+              class="badge"
+              [ngClass]="{'bg-danger': user.role === 'admin', 'bg-primary': user.role === 'user'}">
+          {{ user.role }}
+        </span>
+          </div>
+          <span class="created-on">Создан: {{ user.createdOn| date:'dd MMMM, HH:mm' }}</span>
+          <span class="created-on">{{ user.username }}</span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+        Удалить
+      </button>
+      <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel">Удалить этого пользователя?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Вы хотите удалить {{user.username}}. Действие нельзя отменить.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+              <button type="button" class="btn btn-danger">Удалить</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <h6>Посты:</h6>
-  <ul>
-    <li *ngFor="let post of user.posts">{{ post.title }}</li>
-  </ul>
+      <div class="user-stats">
+        <div class="stat card">
+          <p>Всего рецептов</p>
+          <span>{{ user.posts.length || 0 }}</span>
+        </div>
+        <div class="stat card">
+          <p>Всего комментариев</p>
+          <span>{{ user.comments.length || 0 }}</span>
+        </div>
+        <div class="stat card">
+          <p>Статус</p>
+          <span class="status" [ngClass]="{'active': user.isActive, 'inactive': !user.isActive}">
+          {{ user.isActive ? 'Активен' : 'Неактивен' }}
+        </span>
+        </div>
+      </div>
 
-  <h6>Комментарии:</h6>
-  <ul>
-    <li *ngFor="let comment of user.comments">{{ comment.text }}</li>
-  </ul>
+      <div class="user-recipes" *ngIf="user.posts.length > 0">
+        <div class=" title-create">Созданные рецепты</div>
+        <div class="recipe-cards">
+          <div *ngFor="let post of user.posts" class="recipe-card">
+            <img [src]="post.image" alt="{{ post.title }}" class="recipe-image"/>
+            <div class="recipe-info">
+              <p class="recipe-title">{{ post.title }}</p>
+              <p class="recipe-date">Создан: {{ post.createdOn | date:'dd MMMM, HH:mm' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!user.posts?.length"></div>
+      <div class=" info">
+        <section class="account-info-card">
+          <header class="card-header">
+            <h2>Информация аккаунта</h2>
+          </header>
+          <div class="card-divider"></div>
+          <main class="card-content">
+            <div class="info-item">
+              <div class="info-content">
+                <span class="info-title">Фамилия</span>
+                <span class="info-detail">{{ user.lastName }}</span>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="info-item">
+              <div class="info-content">
+                <span class="info-title">Имя</span>
+                <span class="info-detail">{{ user.firstName }}</span>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="info-item">
+              <div class="info-content">
+                <span class="info-title">Отчество</span>
+                <span class="info-detail">{{ user.middleName || 'N/A' }}</span>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="info-item">
+              <div class="info-content">
+                <span class="info-title">User-Agent</span>
+                <span class="info-detail">{{ user.userAgent }}</span>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="info-item last-login">
+              <div class="info-content">
+                <span class="info-title">Последний раз заходил</span>
+                <span class="info-detail">{{ user.lastEntry | date:'dd MMMM, HH:mm' }}</span>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+          </main>
+        </section>
+      </div>
+    </div>
+  </div>
 </div>
-
-<button
-  type="button"
-  class="btn btn-outline-warning"
-  (click)="deleteUserOnInfo()"
->
-  Удалить пользователя
-</button>

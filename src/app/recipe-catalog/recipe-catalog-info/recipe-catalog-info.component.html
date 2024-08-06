@@ -1,88 +1,167 @@
-<form (ngSubmit)="addComment()" class="mt-5">
-  <div class="form-group">
-    <label for="commentPostId">Post ID</label>
-    <input
-      type="text"
-      id="commentPostId"
-      [(ngModel)]="commentData.postId"
-      name="postId"
-      required
-      class="form-control"
-    />
+<div *ngIf="!error && recipe" class="recipe-page">
+  <div class="container-title">
+    <p class="recipe-title-info">{{ recipe.title }}</p>
+    <div class="action-buttons">
+      <button class="favorite-button" (click)="toggleFavorite(recipe.id)">
+        <img src="assets/images/{{ isFavorite(recipe.id) ? 'like-leke.svg' : 'common-like.svg' }}" alt="Favorite icon">
+      </button>
+      <button class="print-button" (click)="printPage()"><img src="assets/images/bumaga.svg"></button>
+      <button class="share-button" (click)="Share()"><img src="assets/images/get.svg"></button>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="commentText">Comment</label>
-    <textarea
-      id="commentText"
-      [(ngModel)]="commentData.text"
-      name="text"
-      required
-      class="form-control"
-    ></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Add Comment</button>
-</form>
+  <div class="recipe-info">
+    <div class="author-info">
+      <img [src]="recipe.author.avatar" alt="{{ recipe.author.firstName }} {{ recipe.author.lastName }}"
+           class="author-avatar">
+      <div class="author-details">
+        <span class="author-name-info">{{ recipe.author.firstName }} {{ recipe.author.lastName }}</span>
+        <span class="date">{{ recipe.createdOn | date }}</span>
+      </div>
+    </div>
 
-<div *ngIf="error" class="alert alert-danger">
-  {{ error }}
+    <div class="recipe-meta-info">
+      <span class="meta-item">ВРЕМЯ ПРИГОТОВЛЕНИЯ</span>
+      <p class="meta-item-down">{{ recipe.timeCooking }} Минут</p>
+    </div>
+    <span class="meta-item-right"><img src="assets/images/ForkKnife.png">{{ recipe.tags.join(', ') }}</span>
+  </div>
+
+  <div class="recipe-main">
+    <img [src]="recipe.image" alt="{{ recipe.title }}" class="recipe-image">
+
+    <div class="nutrition-info">
+      <div class="opisanie">Пищевая ценность</div>
+      <div class="nutrition-details">
+        <div class="nutrition-item">
+          <span>Калории:</span>
+          <span>{{ recipe.foodValue.calories }} ккал</span>
+        </div>
+        <div class="nutrition-item">
+          <span>Жиры:</span>
+          <span>{{ recipe.foodValue.fats }} г</span>
+        </div>
+        <div class="nutrition-item">
+          <span>Углеводы:</span>
+          <span>{{ recipe.foodValue.carbohydrates }} г</span>
+        </div>
+        <div class="nutrition-item">
+          <span>Белки:</span>
+          <span>{{ recipe.foodValue.proteins }} г</span>
+        </div>
+      </div>
+      <div class="footer-info">Значения приблизительные</div>
+    </div>
+  </div>
+
+  <p class="recipe-description">{{ recipe.body }}</p>
 </div>
 
-<div *ngIf="!error && recipe" class="row">
-  <div class="col-md-4 mb-4">
-    <div class="card">
-      <img
-        *ngIf="recipe.image"
-        [src]="recipe.image"
-        [alt]="recipe.title"
-        class="card-img-top"
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{ recipe.title }}</h5>
-        <p class="card-text">{{ recipe.body }}</p>
-        <p class="card-text">
-          <strong>Tags:</strong> {{ recipe.tags.join(', ') }}
-        </p>
-        <p class="card-text">
-          <strong>Cooking Time:</strong> {{ recipe.timeCooking }} minutes
-        </p>
-        <p class="card-text">
-          <strong>Food Value:</strong>
-          Calories: {{ recipe.foodValue.calories }} |
-          Fats: {{ recipe.foodValue.fats }} |
-          Carbohydrates: {{ recipe.foodValue.carbohydrates }} |
-          Proteins: {{ recipe.foodValue.proteins }}
-        </p>
-
-        <h6>Ingredients</h6>
-        <ul>
-          <li *ngFor="let ingredient of recipe.ingredients">
-            {{ ingredient.title }}: {{ ingredient.description }}
-          </li>
-        </ul>
-
-        <h6>Cooking Steps</h6>
-        <ol>
-          <li *ngFor="let step of recipe.cookingSteps">
-            <strong>{{ step.title }}:</strong> {{ step.description }}
-          </li>
-        </ol>
-
-        <h6>Comments</h6>
-        <ul>
-          <li *ngFor="let comment of recipe.comments">
-            <strong>{{ comment.user?.firstName }}:</strong> {{ comment.text }}
-          </li>
-        </ul>
-
-        <p class="card-text">
-          <small class="text-muted">Автор: {{ recipe.author.firstName }} {{ recipe.author.lastName }}</small>
-        </p>
-        <p class="card-text">
-          <small class="text-muted">Создано: {{ recipe.createdOn | date }}</small> |
-          <small class="text-muted">Обновлено: {{ recipe.updatedOn | date }}</small>
-        </p>
+<div class="container-2">
+  <div class="ingredients-section">
+    <div class="ing">Ингредиенты</div>
+    <div class="ing-need">Что вам пригодится</div>
+    <ul>
+      <li *ngFor="let ingredient of recipe?.ingredients">
+        <button (click)="toggleIngredient(ingredient)" class="check-button">
+          <span *ngIf="!ingredient.completed" class="empty-circle"></span>
+          <span *ngIf="ingredient.completed" class="checkmark"><img src="assets/images/Group%20886.svg"></span>
+        </button>
+        <span [class.strikethrough]="ingredient.completed">{{ ingredient.title }}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="other-recipes-section">
+    <div class="other-recipes-title">Другие рецепты</div>
+    <ng-container *ngFor="let recipe of otherRecipes">
+      <div class="recipe-card" (click)="goToDetail(recipe)">
+        <div class="recipe-image-container">
+          <img [src]="recipe.image" alt="{{ recipe.title }}" class="recipe-image">
+        </div>
+        <div class="recipe-content">
+          <h2 class="recipe-title-enother">{{ recipe.title }}</h2>
+          <div class="author-info">
+            <span class="author-name">{{ recipe.author.firstName }} {{ recipe.author.lastName }}</span>
+          </div>
+        </div>
       </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="container-step">
+  <div class="steps">Шаги приготовления</div>
+  <ul>
+    <li *ngFor="let step of recipe?.cookingSteps; let i = index">
+      <button (click)="toggleStep(step)" class="check-button">
+        <span *ngIf="!step.completed" class="empty-circle"></span>
+        <span *ngIf="step.completed" class="checkmark"><img src="assets/images/Group%20886.svg"></span>
+      </button>
+      <div>
+        <span [class.strikethrough]="step.completed" class="step-title">{{ i + 1 }}. {{ step.title }}</span>
+        <span [class.strikethrough]="step.completed" class="step-description">{{ step.description }}</span>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="container-mb">
+  <header class="title-container">Возможно вам понравятся эти рецепты</header>
+  <div class="try-container">
+    <div class="recipe-list-like">
+      <ng-container *ngFor="let recipe of additionalRecipes">
+        <article class="try-card" (click)="goToDetail(recipe)">
+          <header class="like-image-container">
+            <img [src]="recipe.image" alt="{{ recipe.title }}" class="recipe-image-like">
+          </header>
+          <div class="card-content">
+            <h2 class="like-title">{{ recipe.title }}</h2>
+            <footer class="details-like">
+              <div class="detail-item-like">
+                <img src="assets/images/Vector.png" alt="Time icon">
+                <span class="detail-text">{{ recipe.timeCooking }} минут</span>
+              </div>
+              <div class="detail-item-like">
+                <img src="assets/images/ForkKnife.png" alt="Tag icon">
+                <span class="detail-text-like">{{ recipe.tags.join(', ') }}</span>
+              </div>
+            </footer>
+          </div>
+        </article>
+      </ng-container>
     </div>
   </div>
 </div>
 
+<div class="comments-section">
+  <div class="section-title">Комментарии</div>
+  <ul class="comment-list">
+    <li *ngFor="let comment of recipe?.comments" class="comment-item">
+      <div class="comment-author-avatar">
+        <img [src]="comment.user?.avatar" alt="{{ comment.user?.firstName }}"/>
+      </div>
+      <div class="comment-body">
+        <div class="comment-author-details">
+          <span class="comment-author-name">{{ comment.user?.firstName }} {{ comment.user?.lastName }}</span>
+          <span class="comment-date">{{ comment.createdOn | date: 'dd.MM.yy HH:mm' }}</span>
+        </div>
+        <p class="comment-text">{{ comment.text }}</p>
+      </div>
+    </li>
+  </ul>
+
+  <form (ngSubmit)="addComment()" class="comment-form">
+    <div class="form-group">
+      <label for="commentText">Ваш комментарий</label>
+      <textarea
+        id="commentText"
+        [(ngModel)]="commentData.text"
+        name="text"
+        required
+        class="form-control"
+        rows="4"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">
+      <i class="bi bi-envelope"></i> Отправить
+    </button>
+  </form>
+</div>
